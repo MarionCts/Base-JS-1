@@ -60,15 +60,14 @@ afficherHeure()
 let choix = 2
 
 function afficherChoix() {
-    if (choix === 1) {
-        console.log("Insérer");
-    } else if (choix === 2) {
-        console.log("Supprimer.");
-    } else if (choix === 3) {
-        console.log("Afficher");
-    } else if (choix === 4) {
-        console.log("Ce choix n'existe pas.");
-    }
+    switch(choix) {
+        case 1: console.log("Insérer");
+        break;
+        case 2: console.log("Supprimer.");
+        break;
+        case 3: console.log("Afficher");
+        default: console.log("Ce choix n'existe pas.");
+        }
 }
 
 afficherChoix()
@@ -106,19 +105,69 @@ for (let age = 0; age <= 20; age += 2) {
     }
 }
 
-// // Exo 9
+// Exo 9
 
-// function randomNumber(max) {
-//     return Math.floor(Math.random() * max);
-// }
+function randomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min; // fonction qui génère un nombre entier aléatoire
+}
 
-// console.log(randomNumber(1000));
+let random
+let suiteTirage = [];
 
-// for (let i = 0, j = randomNumber.length; i < j; i++) {
-//     if (numIsPair(i)) {
-//         console.log(i);
-//     } else {
-//         i++;
+function pair() {
+    let nombrePair = false;
+    while (!nombrePair) {
+    random = randomNumber(1, 1000);
+    if (random % 2 === 0) {
+        suiteTirage.push(random);
+        nombrePair = true;
+        }
+    }
+}
+
+function impair () {
+    let nombreImpair = false;
+    while (!nombreImpair) {
+        random = randomNumber(1, 1000);
+        if (random % 2 !== 0) {
+            suiteTirage.push(random);
+            nombreImpair = true;
+        }
+    }
+}
+
+pair();
+impair()
+impair()
+
+console.log(`${suiteTirage}`);
+
+// Exo 10
+
+function randomNumbr(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+const mysteryNumber = 356;
+const randomArray = [];
+let randoom = randomNumbr(1, 500);
+
+
+while (randoom !== mysteryNumber) {
+    randoom = randomNumbr(1, 500);
+    randomArray.push(randoom);
+    if (randoom === mysteryNumber) {
+        console.log(`Il aura fallu ${randomArray.length} tirages pour deviner le nombre mystère qui est ${randomArray[randomArray.length - 1]}`);
+    }
+}
+
+// for (let randoom = randomNumbr(1, 500); randoom !== mysteryNumber ; randoom = randomNumbr(1, 500)) {
+//     randoom = randomNumbr(1, 500);    
+//     randomArray.push(randoom);
+//     if (randoom === mysteryNumber) {
+//         console.log(`Il aura fallu ${randomArray.length} tirages pour deviner le nombre mystère qui est ${randomArray[randomArray.length - 1]}`);
 //     }
 // }
+
+// Exo 11
 
