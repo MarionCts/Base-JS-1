@@ -171,3 +171,12 @@ while (randoom !== mysteryNumber) {
 
 // Exo 11
 
+let ceJour = new Date();
+
+let day = ceJour.getUTCDate();
+let month = ceJour.getMonth() + 1;
+let year = ceJour.getUTCFullYear();
+let hour = ceJour.getUTCHours() + 2;
+let minutes = ceJour.getUTCMinutes();
+
+console.log(`Aujourd'hui nous sommes le ${day}/${month}/${year} et il est ${hour}h${minutes}.`);
