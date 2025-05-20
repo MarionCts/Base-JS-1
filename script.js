@@ -88,7 +88,7 @@ afficherMultiple()
 
 // Exo 7
 
-for (let codePostal = 44000; codePostal <= 44900; codePostal += 100) {
+for (let codePostal = 44000; codePostal <= 44999; codePostal++) {
     console.log(codePostal);
 }
 
@@ -97,18 +97,17 @@ for (let codePostal = 44000; codePostal <= 44900; codePostal += 100) {
 let age = 0
 
 for (let age = 0; age <= 20; age += 2) {
+    if (age !== 10) {
     console.log(age);
-    if (age === 10) {
-        console.log("C'est un 10 !");   
-    } else {
-        console.log(age);
-    }
+    } else if (age === 10) {
+        console.error("C'est un 10 !");   
+    } 
 }
 
 // Exo 9
 
-function randomNumber(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min; // fonction qui génère un nombre entier aléatoire
+function randomNumber() {
+    return Math.floor(Math.random() * 100); // fonction qui génère un nombre entier aléatoire
 }
 
 let random
@@ -144,39 +143,36 @@ console.log(`${suiteTirage}`);
 
 // Exo 10
 
-function randomNumbr(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+function randomNumbr() {
+    return Math.floor(Math.random() * 100);
 }
 
-const mysteryNumber = 356;
+const mysteryNumber = 56;
 const randomArray = [];
-let randoom = randomNumbr(1, 500);
+let randoom = randomNumbr();
 
 
-while (randoom !== mysteryNumber) {
-    randoom = randomNumbr(1, 500);
-    randomArray.push(randoom);
-    if (randoom === mysteryNumber) {
-        console.log(`Il aura fallu ${randomArray.length} tirages pour deviner le nombre mystère qui est ${randomArray[randomArray.length - 1]}`);
-    }
-}
-
-// for (let randoom = randomNumbr(1, 500); randoom !== mysteryNumber ; randoom = randomNumbr(1, 500)) {
-//     randoom = randomNumbr(1, 500);    
+// while (randoom !== mysteryNumber) {
+//     randomArray.push(randoom);
+//     randoom = randomNumbr();
 //     randomArray.push(randoom);
 //     if (randoom === mysteryNumber) {
 //         console.log(`Il aura fallu ${randomArray.length} tirages pour deviner le nombre mystère qui est ${randomArray[randomArray.length - 1]}`);
 //     }
 // }
 
-// Exo 11
+for (let randoom = randomNumbr(); randoom !== mysteryNumber ; randoom = randomNumbr()) {
+    randoom = randomNumbr();    
+    randomArray.push(randoom);
+    if (randoom === mysteryNumber) {
+        console.log(`Il aura fallu ${randomArray.length} tirages pour deviner le nombre mystère qui est ${randomArray[randomArray.length - 1]}`);
+    }
+}
 
-let ceJour = new Date();
+// // Exo 11
 
-let day = ceJour.getUTCDate();
-let month = ceJour.getMonth() + 1;
-let year = ceJour.getUTCFullYear();
-let hour = ceJour.getUTCHours() + 2;
-let minutes = ceJour.getUTCMinutes();
 
-console.log(`Aujourd'hui nous sommes le ${day}/${month}/${year} et il est ${hour}h${minutes}.`);
+const dates = new Date().toLocaleDateString('fr-FR');
+const hours = new Date().toLocaleTimeString('fr-FR');
+
+console.log(`Aujourd'hui, nous sommes le ${dates} et il est ${hours}.`);
